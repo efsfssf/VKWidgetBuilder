@@ -9,7 +9,8 @@ var windowOnloadAdd = function (event) {
  };
 
  windowOnloadAdd(function() {
-    const tasksListElement = document.querySelector(`.tasks__list`);
+    const tasksListElement = document.getElementsByClassName('tasks__list')[1];
+    
     const taskElements = tasksListElement.querySelectorAll(`.tasks__item`);
 
     // Перебираем все элементы списка и присваиваем нужное значение
