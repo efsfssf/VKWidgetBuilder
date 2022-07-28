@@ -14,6 +14,13 @@
   list-style: none;
 }
 
+.bloks__list2 {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
 .bloks__item {
   transition: background-color 0.5s;
   margin-bottom: 10px;

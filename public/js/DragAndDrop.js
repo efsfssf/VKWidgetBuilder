@@ -10,6 +10,7 @@ var windowOnloadAdd = function (event) {
 
  windowOnloadAdd(function() {
     menuItems();
+    JsonView();
     const bloksListElement = document.getElementsByClassName('bloks__list')[1];
     
     const taskElements = bloksListElement.querySelectorAll(`.bloks__item`);
@@ -43,7 +44,7 @@ var windowOnloadAdd = function (event) {
         evt.preventDefault();
         
         // Находим перемещаемый элемент
-        const activeElement = bloksListElement.querySelector(`.selected`) || bloksListElementMenu.querySelector(`.selected`);
+        const activeElement = bloksListElement.querySelector(`.selected`) || bloksListElementMenuTwo.querySelector(`.selected`) || bloksListElementMenuOne.querySelector(`.selected`);
         // Находим элемент, над которым в данный момент находится курсор
         const currentElement = evt.target;
         // Проверяем, что событие сработало:
@@ -68,28 +69,38 @@ var windowOnloadAdd = function (event) {
             return;
         }
         // Вставляем activeElement перед nextElement
-        console.log(activeElement);
-        console.log(nextElement);
         bloksListElement.insertBefore(activeElement, nextElement);
+        JsonBuilder(bloksListElement);
     });
 
 
 
     // МЕНЮ
-    const bloksListElementMenu = document.getElementsByClassName('bloks__list')[0];
-    
-    const taskElementsMenu = bloksListElementMenu.querySelectorAll(`.bloks__itemMenu`);
+    const bloksListElementMenuOne = document.getElementsByClassName('bloks__list')[0];
+    const bloksListElementMenuTwo = document.getElementsByClassName('bloks__list2')[0];
+    const taskElementsMenuOne = bloksListElementMenuOne.querySelectorAll(`.bloks__itemMenu`);
+    const taskElementsMenuTwo = bloksListElementMenuTwo.querySelectorAll(`.bloks__itemMenu`)
 
     // Перебираем все элементы списка и присваиваем нужное значение
-    for (const task of taskElementsMenu) {
+    for (const task of taskElementsMenuOne) {
+        task.draggable = true;
+    }
+    for (const task of taskElementsMenuTwo) {
         task.draggable = true;
     }
 
-    bloksListElementMenu.addEventListener(`dragstart`, (evt) => {
+    bloksListElementMenuOne.addEventListener(`dragstart`, (evt) => {
         evt.target.classList.add(`selected`);
     })
     
-    bloksListElementMenu.addEventListener(`dragend`, (evt) => {
+    bloksListElementMenuOne.addEventListener(`dragend`, (evt) => {
+        evt.target.classList.remove(`selected`);
+    });
+    bloksListElementMenuTwo.addEventListener(`dragstart`, (evt) => {
+        evt.target.classList.add(`selected`);
+    })
+    
+    bloksListElementMenuTwo.addEventListener(`dragend`, (evt) => {
         evt.target.classList.remove(`selected`);
     });
 

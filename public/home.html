@@ -6,8 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="./css/main.css" />
 <link rel="stylesheet" href="./css/DragAndDrop_Blocks.css" />
+<link rel="stylesheet" href="./css/Dropdown.css" />
 <script src="./js/DragAndDrop.js"></script>
 <script src="./js/home.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+<script src="./js/Dropdown.js"></script>
 <title>Widget Builder</title>
 </head>
 
@@ -67,7 +70,7 @@
         </div>
         <div class="app-content">
             <div class="app-sidebar">
-                <a href="javascript: void(0)" class="app-sidebar-link active">
+                <a href="javascript: openMenu(1)" class="app-sidebar-link active">
                     <svg style="pointer-events: none;"  class="link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                         stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         class="feather feather-pie-chart" viewBox="0 0 24 24">
@@ -75,7 +78,7 @@
                         <path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z" />
                     </svg>
                 </a>
-                <a href="javascript: void(0)" class="app-sidebar-link">
+                <a href="javascript: openMenu(2)" lol="1" class="app-sidebar-link">
                     <svg style="pointer-events: none;"  class="link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                     stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     class="feather feather-pie-chart" viewBox="0 0 24 24">
@@ -106,9 +109,9 @@
                     <p>Блоки</p>
                 </div>
                 <div class="messages">
-                    <section class="bloks">
+                    <section class="bloks active">
                         <ul class="bloks__list">
-                            <li class="bloks__itemMenu">
+                            <li class="bloks__itemMenu" id="button">
                                 <div class="project-box-wrapper">
                                     <div class="project-box" style="background-color: #fee4cb;">
                                         <div class="project-box-header">
@@ -134,7 +137,107 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="bloks__itemMenu">
+                            <li class="bloks__itemMenu" id="action">
+                                <div class="project-box-wrapper">
+                                    <div class="project-box" style="background-color: #e9e7fd;">
+                                        <div class="project-box-header">
+                                            <span>В разработке</span>
+                                            <div class="more-wrapper">
+                                                <button class="project-btn-more">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-more-vertical">
+                                                        <circle cx="12" cy="12" r="1"></circle>
+                                                        <circle cx="12" cy="5" r="1"></circle>
+                                                        <circle cx="12" cy="19" r="1"></circle>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="project-box-content-header">
+                                            <p class="box-content-header">Действие</p>
+                                            <p class="box-content-subheader">Объект, описывающий действие, которое будет выполнено после нажатия на соответствующий элемент виджета. Примеры действий: открыть мини-приложение, открыть ссылку.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="bloks__itemMenu" id="flooter">
+                                <div class="project-box-wrapper">
+                                    <div class="project-box">
+                                        <div class="project-box-header">
+                                            <span>Не поддерживается на данный момент</span>
+                                            <div class="more-wrapper">
+                                                <button class="project-btn-more">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-more-vertical">
+                                                        <circle cx="12" cy="12" r="1"></circle>
+                                                        <circle cx="12" cy="5" r="1"></circle>
+                                                        <circle cx="12" cy="19" r="1"></circle>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="project-box-content-header">
+                                            <p class="box-content-header">Подвал</p>
+                                            <p class="box-content-subheader">Предназначен для отображения нижней части виджета</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="bloks">
+                        <ul class="bloks__list2">
+                            <li class="bloks__itemMenu" id="image">
+                                <div class="project-box-wrapper">
+                                    <div class="project-box" style="background-color: #ffd3e2;">
+                                      <div class="project-box-header">
+                                        <span>В разработке</span>
+                                        <div class="more-wrapper">
+                                          <button class="project-btn-more">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
+                                              <circle cx="12" cy="12" r="1"></circle>
+                                              <circle cx="12" cy="5" r="1"></circle>
+                                              <circle cx="12" cy="19" r="1"></circle></svg>
+                                          </button>
+                                        </div>
+                                      </div>
+                                      <div class="project-box-content-header">
+                                        <p class="box-content-header">Изображение</p>
+                                        <p class="box-content-subheader">Добавляет изображение в виджет</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                            </li>
+                            <li class="bloks__itemMenu" id="header">
+                                <div class="project-box-wrapper">
+                                    <div class="project-box">
+                                        <div class="project-box-header">
+                                            <span>В разработке</span>
+                                            <div class="more-wrapper">
+                                                <button class="project-btn-more">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-more-vertical">
+                                                        <circle cx="12" cy="12" r="1"></circle>
+                                                        <circle cx="12" cy="5" r="1"></circle>
+                                                        <circle cx="12" cy="19" r="1"></circle>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="project-box-content-header">
+                                            <p class="box-content-header">Заголовок виджета</p>
+                                            <p class="box-content-subheader">В заголовке виджета может отображаться как иконка, так и текст</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="bloks__itemMenu" id="text">
                                 <div class="project-box-wrapper">
                                     <div class="project-box" style="background-color: #e9e7fd;">
                                         <div class="project-box-header">
@@ -164,10 +267,10 @@
                                 <div class="project-box-wrapper">
                                     <div class="project-box">
                                         <div class="project-box-header">
-                                            <span>В разработке</span>
-                                            <div class="more-wrapper">
-                                                <button class="project-btn-more">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            <span>Тестовый блок</span>
+                                            <div class="more-wrapper dropdown_list">
+                                                <button class="project-btn-more" onclick="show_list()">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="pointer-events: none;"
                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                         class="feather feather-more-vertical">
@@ -176,11 +279,20 @@
                                                         <circle cx="12" cy="19" r="1"></circle>
                                                     </svg>
                                                 </button>
+                                                <div id="courses_id" class="courses">
+                                                    <ul>
+                                                        <li><a href="">Machine learning</a></li>
+                                                        <li><a href="">Data science</a></li>
+                                                        <li><a href="">Data analysis</a></li>
+                                                        <li><a href="">Data mining</a></li>
+                                                        <li><a href="">Data warehousing</a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="project-box-content-header">
-                                            <p class="box-content-header">Заголовок виджета</p>
-                                            <p class="box-content-subheader">В заголовке виджета может отображаться как иконка, так и текст</p>
+                                            <p class="box-content-header">Блок испытаний</p>
+                                            <p class="box-content-subheader">Данный блок является тестовым, для проведения различных испытаний при разработке сайта</p>
                                         </div>
                                     </div>
                                 </div>
@@ -218,7 +330,7 @@
                     <p>Результат</p>
                 </div>
                 <div class="messages">
-
+                    
                 </div>
             </div>
 

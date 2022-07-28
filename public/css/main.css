@@ -794,3 +794,11 @@
 		 top: 10px;
 	}
 }
+
+.messages-section .messages .bloks {
+	display: none;
+}
+
+.messages-section .messages .active {
+	display: block;
+}
