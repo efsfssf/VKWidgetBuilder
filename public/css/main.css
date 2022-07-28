@@ -520,7 +520,7 @@
 	 margin: 0;
 }
  .project-box-wrapper {
-	 padding: 8px;
+	 /* padding: 8px; */
 	 transition: 0.2s;
 }
  .project-btn-more {

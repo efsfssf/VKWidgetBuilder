@@ -1,53 +1,11 @@
-/* Индекс слайда по умолчанию */
-var slideIndex = 1;
-
-var windowOnloadAdd = function (event) {
-    if ( window.onload ){
-       window.onload = window.onload + event;
-    } else {
-       window.onload = event;
-    };
- };
-
- windowOnloadAdd(function() {
-    slideIndex = 1;
-    showSlides(slideIndex);
- });
-
-/* Функция увеличивает индекс на 1, показывает следующй слайд*/
-function plusSlide() {
-    showSlides(slideIndex += 1);
+function menuItems() {
+    const menu = document.getElementsByClassName('app-sidebar')[0];
+    menu.onclick=function(e){
+        for(let i = 0;i<menu.children.length;i++){
+            menu.children[i].classList.remove('active');
+        }
+        e.target.classList.add('active');
+        
+      }
+    //menu.addEventListener('click',e => e.target.classList.add("active"))
 }
-
-/* Функция уменьшяет индекс на 1, показывает предыдущий слайд*/
-function minusSlide() {
-    showSlides(slideIndex -= 1);  
-}
-
-/* Устанавливает текущий слайд */
-function currentSlide(n) {
-    showSlides(slideIndex = n);
-}
-
-/* Основная функция слайдера */
-function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("item");
-    var dots = document.getElementsByClassName("slider-dots_item");
-    if (n > slides.length) {
-      slideIndex = 1
-    }
-    if (n < 1) {
-        slideIndex = slides.length
-    }
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex - 1].style.display = "block";
-    //dots[slideIndex - 1].className += " active";
-}
-
-

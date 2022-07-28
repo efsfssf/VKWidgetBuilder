@@ -9,20 +9,21 @@ var windowOnloadAdd = function (event) {
  };
 
  windowOnloadAdd(function() {
-    const tasksListElement = document.getElementsByClassName('tasks__list')[1];
+    menuItems();
+    const bloksListElement = document.getElementsByClassName('bloks__list')[1];
     
-    const taskElements = tasksListElement.querySelectorAll(`.tasks__item`);
+    const taskElements = bloksListElement.querySelectorAll(`.bloks__item`);
 
     // Перебираем все элементы списка и присваиваем нужное значение
     for (const task of taskElements) {
         task.draggable = true;
     }
 
-    tasksListElement.addEventListener(`dragstart`, (evt) => {
+    bloksListElement.addEventListener(`dragstart`, (evt) => {
         evt.target.classList.add(`selected`);
     })
     
-    tasksListElement.addEventListener(`dragend`, (evt) => {
+    bloksListElement.addEventListener(`dragend`, (evt) => {
         evt.target.classList.remove(`selected`);
     });
 
@@ -37,19 +38,19 @@ var windowOnloadAdd = function (event) {
         return nextElement;
     };
 
-    tasksListElement.addEventListener(`dragover`, (evt) => {
+    bloksListElement.addEventListener(`dragover`, (evt) => {
         // Разрешаем сбрасывать элементы в эту область
         evt.preventDefault();
         
         // Находим перемещаемый элемент
-        const activeElement = tasksListElement.querySelector(`.selected`) || tasksListElementMenu.querySelector(`.selected`);
+        const activeElement = bloksListElement.querySelector(`.selected`) || bloksListElementMenu.querySelector(`.selected`);
         // Находим элемент, над которым в данный момент находится курсор
         const currentElement = evt.target;
         // Проверяем, что событие сработало:
         // 1. не на том элементе, который мы перемещаем,
         // 2. именно на элементе списка
         const isMoveable = activeElement !== currentElement &&
-            currentElement.classList.contains(`tasks__item`) || currentElement.classList.contains(`tasks__itemMenu`);
+            currentElement.classList.contains(`bloks__item`) || currentElement.classList.contains(`bloks__itemMenu`);
         
         // Если нет, прерываем выполнение функции
         if (!isMoveable) {
@@ -69,26 +70,26 @@ var windowOnloadAdd = function (event) {
         // Вставляем activeElement перед nextElement
         console.log(activeElement);
         console.log(nextElement);
-        tasksListElement.insertBefore(activeElement, nextElement);
+        bloksListElement.insertBefore(activeElement, nextElement);
     });
 
 
 
     // МЕНЮ
-    const tasksListElementMenu = document.getElementsByClassName('tasks__list')[0];
+    const bloksListElementMenu = document.getElementsByClassName('bloks__list')[0];
     
-    const taskElementsMenu = tasksListElementMenu.querySelectorAll(`.tasks__itemMenu`);
+    const taskElementsMenu = bloksListElementMenu.querySelectorAll(`.bloks__itemMenu`);
 
     // Перебираем все элементы списка и присваиваем нужное значение
     for (const task of taskElementsMenu) {
         task.draggable = true;
     }
 
-    tasksListElementMenu.addEventListener(`dragstart`, (evt) => {
+    bloksListElementMenu.addEventListener(`dragstart`, (evt) => {
         evt.target.classList.add(`selected`);
     })
     
-    tasksListElementMenu.addEventListener(`dragend`, (evt) => {
+    bloksListElementMenu.addEventListener(`dragend`, (evt) => {
         evt.target.classList.remove(`selected`);
     });
 
