@@ -7,10 +7,12 @@
 <link rel="stylesheet" href="./css/main.css" />
 <link rel="stylesheet" href="./css/DragAndDrop_Blocks.css" />
 <link rel="stylesheet" href="./css/Dropdown.css" />
+<link rel="stylesheet" href="./css/ModalWindow.css" />
 <script src="./js/DragAndDrop.js"></script>
 <script src="./js/home.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 <script src="./js/Dropdown.js"></script>
+<script src="./js/BlockData.js"></script>
 <title>Widget Builder</title>
 </head>
 
@@ -263,12 +265,12 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="bloks__itemMenu" data-settings="">
+                            <li class="bloks__itemMenu" id="test" data-value="" data-style="">
                                 <div class="project-box-wrapper">
                                     <div class="project-box">
                                         <div class="project-box-header">
                                             <span>Тестовый блок</span>
-                                            <div class="more-wrapper dropdown_list">
+                                            <div class="more-wrapper">
                                                 <button class="project-btn-more" onclick="show_list()">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="pointer-events: none;"
                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -281,8 +283,8 @@
                                                 </button>
                                                 <div id="courses_id" class="courses">
                                                     <ul style="list-style-type: none;">
-                                                        <li><a href="">Изменить</a></li>
-                                                        <li><a href="">Удалить</a></li>
+                                                        <li><a href="#!" onclick="javasctipt: reopenBlocksData(this)">Изменить</a></li>
+                                                        <li><a href="#!" onclick="javasctipt: removeBlocksData(this)">Удалить</a></li>
                                                     </ul>
                                                 </div>
                                             </div>

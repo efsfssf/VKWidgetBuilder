@@ -26,6 +26,7 @@ var windowOnloadAdd = function (event) {
     
     bloksListElement.addEventListener(`dragend`, (evt) => {
         evt.target.classList.remove(`selected`);
+        openBlocksData(evt.target);
     });
 
     const getNextElement = (cursorPosition, currentElement) => {
