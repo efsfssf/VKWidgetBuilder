@@ -802,3 +802,8 @@
 .messages-section .messages .active {
 	display: block;
 }
+
+::selection {
+    background: #1f1c24; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+   }

@@ -10,7 +10,6 @@ var windowOnloadAdd = function (event) {
 
  windowOnloadAdd(function() {
     menuItems();
-    JsonView();
     const bloksListElement = document.getElementsByClassName('bloks__list')[1];
     
     const taskElements = bloksListElement.querySelectorAll(`.bloks__item`);
@@ -71,7 +70,7 @@ var windowOnloadAdd = function (event) {
         }
         // Вставляем activeElement перед nextElement
         bloksListElement.insertBefore(activeElement, nextElement);
-        JsonBuilder(bloksListElement);
+        BlocksList(bloksListElement);
     });
 
 

@@ -22,22 +22,7 @@ function openMenu(item) {
     console.log(item);
 }
 
-function JsonBuilder(content) {
-    //console.clear();
-    for (let i = 0; i < content.children.length; i++) {
-        if (content.children[i].id !== "")
-            console.log(content.children[i].id)
-    }
-}
 
-function JsonView(jsonContent) {
-    const jsonBlock = document.getElementsByClassName('messages-section')[1];
-    const json = jsonBlock.getElementsByClassName('messages')[0];
-
-
-    json.innerHTML += `<pre class="prettyprint">${jsonContent}</pre>`;
-
-}
 
 function get_parent(elem) {
     /*** For Class ***/
