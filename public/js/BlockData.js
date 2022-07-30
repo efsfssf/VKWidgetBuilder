@@ -1,69 +1,12 @@
-// Список блоков
-let test;
-class Test {
+let titleELEMENT;
+
+// Список ЭЛЕМЕНТОВ
+class Text {
     constructor(id, object, value, style) {
         this.id = id;
         this.object = object;
         this.value = value;
         this.style = style;
-    }
-
-    getPayload() {
-        return `
-            <div>
-                <a href="#!" title="Close" class="modal-close" onClick="closeBlocksData()">Close</a>
-                <h1>${this.id.toUpperCase()}</h1>
-                <div>Заголовок виджета</div>
-                <br>
-                <div>Введите текст виджета</div>
-                <input id="value" value="${this.value}" type="text" size="40"></input>
-                <br>
-                <br>
-                <div>Стиль</div>
-                <small>Этот объект описывает стили, применимые к базовому элементу TEXT, который вы ввели выше</small>
-                <div>Начертание шрифта</div>
-                <select name="weight" id="styleWeight">
-                    <option value="regular" selected="selected">Обычный</option>
-                    <option value="medium">Полужирный</option>
-                </select>
-                <div>Выравнивание базового элемента по горизонтали</div>
-                <select name="align" id="styleAlign">
-                    <option value="left">По левому</option>
-                    <option value="center" selected="selected">По центру</option>
-                    <option value="right">По правому</option>
-                </select>
-                <br>
-                <br>
-                <input id="save" value="Сохранить" type="button" onclick="test.save()"></input>
-            </div>`;
-    }
-
-    save() {
-        this.value = document.getElementById('value').value;
-        var weight = document.getElementById('styleWeight').value;
-        var align = document.getElementById('styleAlign').value;
-
-
-
-        var obj = {
-            "type": "Widget",
-            "payload": {
-                "title": {
-                    "value": `${this.value}`,
-                    "style": {
-                        "weight": `${weight}`,
-                        "align": `${align}`
-                    }
-                }
-            },
-            "layout_name": "universal_placeholder"
-        };
-
-        this.style = JSON.stringify(obj, undefined, 4);
-
-        console.log(this.style);
-        build(this.style);
-
     }
 }
 
@@ -84,13 +27,92 @@ function getData(content) {
     }
 }
 
+// Список БЛОКОВ
 
+class Title {
+    constructor(id, object, title, button, action, flooter) {
+        this.id = id;
+        this.object = object;
+        this.title = title;
+        this.button = button;
+        this.action = action;
+        this.flooter = flooter;
+    }
+
+    getPayload() {
+        return `
+            <div>
+                <a href="#!" title="Close" class="modal-close" onClick="titleELEMENT.save(); closeBlocksData()">Close</a>
+                <h1>${this.title.id.toUpperCase()}</h1>
+                <div>Заголовок виджета</div>
+                <br>
+                <div>Введите текст виджета</div>
+                <input id="value" value="${this.title.value}" type="text" size="40"></input>
+                <br>
+                <br>
+                <div>Стиль</div>
+                <small>Этот объект описывает стили, применимые к базовому элементу TEXT, который вы ввели выше</small>
+                <div>Начертание шрифта</div>
+                <select name="weight" id="styleWeight">
+                    <option value="regular" ${JSON.parse(JSON.stringify(this.title.style))['weight'] == 'regular' ? `selected="selected"` : ``}>Обычный</option>
+                    <option value="medium" ${JSON.parse(JSON.stringify(this.title.style))['weight'] == 'medium' ? `selected="selected"` : ``}>Полужирный</option>
+                </select>
+                <div>Выравнивание базового элемента по горизонтали</div>
+                <select name="align" id="styleAlign">
+                    <option value="left" ${JSON.parse(JSON.stringify(this.title.style))['align'] == 'left' ? `selected="selected"` : ``}>По левому</option>
+                    <option value="center" ${JSON.parse(JSON.stringify(this.title.style))['align'] == 'center' ? `selected="selected"` : ``}>По центру</option>
+                    <option value="right" ${JSON.parse(JSON.stringify(this.title.style))['align'] == 'right' ? `selected="selected"` : ``}>По правому</option>
+                </select>
+                <br>
+                <br>
+                <input id="save" value="Сохранить" type="button" onclick="titleELEMENT.save()"></input>
+            </div>`;
+    }
+
+    save() {
+        console.log('Сохрнение');
+        this.value = document.getElementById('value').value;
+        var weight = document.getElementById('styleWeight').value;
+        var align = document.getElementById('styleAlign').value;
+
+        var styleBlock =  {
+            "weight": `${weight}`,
+            "align": `${align}`
+        } 
+
+        var obj = {
+            "type": "Widget",
+            "payload": {
+                "title": {
+                    "value": `${this.value}`,
+                    "style": styleBlock
+                }
+            },
+            "layout_name": "universal_placeholder"
+        };
+
+        this.style = styleBlock;
+        build(JSON.stringify(obj, undefined, 4));
+
+    }
+}
 
 function openBlocksData(data) {
     switch (data.id) {
         case "test":
-            test = new Test("Текст", null, "Вы можете поменять этот текст", "");
-            test.object = buildBlocksData(test.getPayload());
+            if (typeof titleELEMENT === 'undefined'){
+                console.log('Создаем блок');
+                var textTitle = new Text("Текст", null, "Вы можете поменять этот текст", {
+                    "weight": "regular",
+                    "align": "center"
+                });
+                titleELEMENT = new Title("Заголовок",  null, null, null, null, null);
+                
+            }
+            titleELEMENT.title = textTitle;
+            titleELEMENT.object = buildBlocksData(titleELEMENT.getPayload());
+            
+            console.log(typeof title);
             break;
     }
 }
