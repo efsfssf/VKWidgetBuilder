@@ -30,7 +30,7 @@ function getData(content) {
 // Список БЛОКОВ
 
 class Title {
-    constructor(id, object, title, button, action, flooter) {
+    constructor(id, object, title) {
         this.id = id;
         this.object = object;
         this.title = title;
