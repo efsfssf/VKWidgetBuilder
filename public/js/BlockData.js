@@ -103,7 +103,7 @@ function openBlocksData(data) {
                     "weight": "regular",
                     "align": "center"
                 });
-                titleELEMENT = new Title("Заголовок",  null, null, null, null, null);
+                titleELEMENT = new Title("Заголовок",  null, null);
                 
             }
             titleELEMENT.title = textTitle;
