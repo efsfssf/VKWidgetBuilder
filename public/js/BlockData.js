@@ -34,9 +34,6 @@ class Title {
         this.id = id;
         this.object = object;
         this.title = title;
-        this.button = button;
-        this.action = action;
-        this.flooter = flooter;
     }
 
     getPayload() {
