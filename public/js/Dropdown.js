@@ -1,6 +1,6 @@
-function show_list() {
-    var courses = document.getElementById("courses_id");
-
+function show_list(nameBlock) {
+    var courses = document.getElementById(`${nameBlock}_id`);
+    
     if (courses.style.display == "block") {
         courses.style.display = "none";
     } else {
@@ -9,7 +9,10 @@ function show_list() {
 }
 window.onclick = function (event) {
     if (!event.target.matches('.project-btn-more')) {
-        document.getElementById('courses_id')
-            .style.display = "none";
+        var menuList = document.getElementsByClassName('courses');
+        for (var item of menuList)
+        {
+            item.style.display = "none";
+        }
     }
 }
