@@ -1,5 +1,21 @@
 function build(content) {
-    JsonView(content);
+    console.log(titleELEMENT.data)
+    const obj = {"type": "Widget",
+    "payload": {
+        "title": JSON.parse(content)
+    },
+    "layout_name": "universal_placeholder"}
+    JsonView(obj);
+}
+
+function update(content)
+{
+    console.log('Обновляем JSON');
+    for (let i = 0; i < content.children.length; i++) {
+        if (content.children[i].id !== "") {
+            console.log(content.children[i].id);
+        }
+    }
 }
 
 function JsonView(jsonContent) {

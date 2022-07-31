@@ -10,21 +10,11 @@ class Text {
     }
 }
 
-function getData(content) {
-    for (let i = 0; i < content.children.length; i++) {
-        if (content.children[i].id !== "") {
-            var block = document.getElementById(content.children[i].id);
-            console.clear();
-            for (var data of Object.keys(block.dataset)) {
-                console.log(data);
-            }
-            /*
-                  article.dataset.columns // "3"
-                  article.dataset.indexNumber // "12314"
-                  article.dataset.parent // "cars"
-                  */
-        }
-    }
+function setData(content, id, obj) {
+    id = "test";
+    const el = document.getElementById(id);
+    console.log(el);
+    el.dataset.obj = obj;
 }
 
 // Список БЛОКОВ
@@ -35,8 +25,9 @@ class Title {
         this.object = object;
         this.title = title;
     }
-
+    data = null;
     getPayload() {
+        console.log(this.title);
         return `
             <div>
                 <a href="#!" title="Close" class="modal-close" onClick="titleELEMENT.save(); closeBlocksData()">Close</a>
@@ -77,20 +68,19 @@ class Title {
             "align": `${align}`
         } 
 
-        var obj = {
-            "type": "Widget",
-            "payload": {
-                "title": {
+        var objTitle = {
                     "value": `${this.value}`,
                     "style": styleBlock
-                }
-            },
-            "layout_name": "universal_placeholder"
-        };
+                };
 
-        this.style = styleBlock;
-        build(JSON.stringify(obj, undefined, 4));
+        this.style = objTitle;
 
+        this.title.value = objTitle['value'];
+        this.title.style = styleBlock;
+
+        this.data = objTitle;
+        build(JSON.stringify(objTitle, undefined, 4));
+        setData(document.querySelector('.projects-section .bloks__list'), this.id, JSON.stringify(objTitle));
     }
 }
 
@@ -99,17 +89,18 @@ function openBlocksData(data) {
         case "test":
             if (typeof titleELEMENT === 'undefined'){
                 console.log('Создаем блок');
-                var textTitle = new Text("Текст", null, "Вы можете поменять этот текст", {
+                var textTitle = new Text("Заголовок", null, "Вы можете поменять этот текст", {
                     "weight": "regular",
                     "align": "center"
                 });
                 titleELEMENT = new Title("Заголовок",  null, null);
+                titleELEMENT.title = textTitle;
                 
             }
-            titleELEMENT.title = textTitle;
+            
             titleELEMENT.object = buildBlocksData(titleELEMENT.getPayload());
             
-            console.log(typeof title);
+            console.log(titleELEMENT.title);
             break;
     }
 }
@@ -136,8 +127,14 @@ function closeBlocksData() {
 }
 
 function removeBlocksData(data) {
+
+    // Перемещаем блок со схемы в список блоков
     const one = document.querySelector('.messages-section .messages .bloks__list2');
     one.insertAdjacentElement('beforeEnd', get_parent(data));
+
+    // Обновляем JSON
+    
+    update(document.querySelector('.projects-section .bloks__list'));
 }
 
 
