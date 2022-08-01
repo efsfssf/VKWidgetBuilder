@@ -1,21 +1,41 @@
-function build(content) {
+/*function build(content) {
     console.log(titleELEMENT.data)
+    var temp = {}
+    temp[`${titleELEMENT.id}`] = JSON.parse(content)
     const obj = {"type": "Widget",
     "payload": {
-        "title": JSON.parse(content)
+        
     },
     "layout_name": "universal_placeholder"}
     JsonView(obj);
 }
+*/
+function merge(...arr){
+    return arr.reduce((acc, val) => {    
+      return { ...acc, ...val  };
+    }, {});
+  }
 
 function update(content)
 {
+    var obj2 = {}
     console.log('Обновляем JSON');
+
     for (let i = 0; i < content.children.length; i++) {
         if (content.children[i].id !== "") {
-            console.log(content.children[i].id);
+            //var temp_obj = JSON.parse();
+            var temp = {}
+            temp[`${content.children[i].id}`] = JSON.parse(content.children[i].dataset.obj);
+            obj2 = merge(obj2,  temp);
+            console.log(obj2);
         }
     }
+    console.log(obj2);
+    console.log(JSON.stringify(obj2, undefined, 4));
+    const obj = {"type": "Widget",
+    "payload": obj2,
+    "layout_name": "universal_placeholder"}
+    JsonView(obj);
 }
 
 function JsonView(jsonContent) {

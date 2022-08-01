@@ -79,8 +79,10 @@ class Title {
         this.title.style = styleBlock;
 
         this.data = objTitle;
-        build(JSON.stringify(objTitle, undefined, 4));
+        //build(JSON.stringify(objTitle, undefined, 4));
         setData(document.querySelector('.projects-section .bloks__list'), this.id, JSON.stringify(objTitle));
+        
+        update(document.querySelector('.projects-section .bloks__list'));
     }
 }
 
