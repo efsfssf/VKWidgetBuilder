@@ -215,6 +215,7 @@ class Header_icon {
         this.header_icon = header_icon;
     }
     data = null;
+    index = 0;
     getPayload() {
         console.log(this.header_icon);
         var temp = "";
@@ -222,19 +223,20 @@ class Header_icon {
         {
             temp += `<div class='blockModal'>
             <div>Введите индитификатор иконки <a href='#!'>Как узнать?</a></div>
-            <input id="image_id" value="${i.image_id}" type="text" size="40"></input>
+            <input id="image_id_${this.index}" value="${i.image_id}" type="text" size="40" required placeholder="451939019"></input>
             <div>Введите высоту иконки</div>
-            <input id="height" value="${i.height}" type="text" size="40"></input>
+            <input id="height_${this.index}" value="${i.height}" type="text" size="40" placeholder="30"></input>
             <div>Введите ширину иконки</div>
-            <input id="width" value="${i.width}" type="text" size="40"></input>
-        </div>`
+            <input id="width_${this.index}" value="${i.width}" type="text" size="40" placeholder="30"></input>
+            </div>`;
+            this.index++;
         }
         return `
             <div>
                 <a href="#!" title="Close" class="modal-close" onClick="header_iconELEMENT.save(); closeBlocksData()">Close</a>
                 <h1>${this.header_icon.id.toUpperCase()}</h1>
                 <div>Иконка заголовка виджета</div>
-                <br>${temp}
+                <br id='childElement'>${temp}
                 <input id="save" value="Добавить" type="button" onclick="addModalBlock()"></input>
                 <br>
                 <br>
@@ -245,17 +247,20 @@ class Header_icon {
     save() {
         console.log('Сохрнение');
         var objheader_icon = [];
+        var index = 0;
         for (var i of this.header_icon.data)
         {
-            i.image_id = document.getElementById('image_id').value;
-            i.height = document.getElementById('height').value;
-            i.width = document.getElementById('width').value;
+            console.log(document.getElementById(`image_id_${index}`));
+            i.image_id = document.getElementById(`image_id_${index}`).value;
+            i.height = document.getElementById(`height_${index}`).value;
+            i.width = document.getElementById(`width_${index}`).value;
 
             objheader_icon.push({
                 "image_id": `${i.image_id}`,
                 "height": `${i.height}`,
                 "width": `${i.width}`
             })
+            index++;
         }
         
 
