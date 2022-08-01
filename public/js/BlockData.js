@@ -251,14 +251,14 @@ class Header_icon {
         for (var i of this.header_icon.data)
         {
             console.log(document.getElementById(`image_id_${index}`));
-            i.image_id = document.getElementById(`image_id_${index}`).value;
-            i.height = document.getElementById(`height_${index}`).value;
-            i.width = document.getElementById(`width_${index}`).value;
+            i.image_id = Number(document.getElementById(`image_id_${index}`).value);
+            i.height = Number(document.getElementById(`height_${index}`).value);
+            i.width = Number(document.getElementById(`width_${index}`).value);
 
             objheader_icon.push({
-                "image_id": `${i.image_id}`,
-                "height": `${i.height}`,
-                "width": `${i.width}`
+                "image_id": i.image_id,
+                "height": i.height,
+                "width": i.width
             })
             index++;
         }
