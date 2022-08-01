@@ -1,6 +1,8 @@
 //#region СПИСОК ЭЛЕМЕНТОВ
 let titleELEMENT;
 let subtitleELEMENT;
+let header_titleELEMENT;
+let header_iconELEMENT;
 //#endregion
 
 //#region ОПИСАНИЕ ЭЛЕМЕНТОВ
@@ -10,6 +12,14 @@ class Text {
         this.object = object;
         this.value = value;
         this.style = style;
+    }
+}
+
+class IMAGE_ITEM {
+    constructor(id, object, data) {
+        this.id = id;
+        this.object = object;
+        this.data = data;
     }
 }
 //#endregion
@@ -157,6 +167,107 @@ class Subtitle {
         update(document.querySelector('.projects-section .bloks__list'));
     }
 }
+
+class Header_title {
+    constructor(id, object, header_title) {
+        this.id = id;
+        this.object = object;
+        this.header_title = header_title;
+    }
+    data = null;
+    getPayload() {
+        console.log(this.header_title);
+        return `
+            <div>
+                <a href="#!" title="Close" class="modal-close" onClick="header_titleELEMENT.save(); closeBlocksData()">Close</a>
+                <h1>${this.header_title.id.toUpperCase()}</h1>
+                <div>Заголовок виджета</div>
+                <br>
+                <div>Введите заголовок виджета</div>
+                <input id="value" value="${this.header_title.value}" type="text" size="40"></input>
+                <br>
+                <br>
+                <input id="save" value="Сохранить" type="button" onclick="header_titleELEMENT.save()"></input>
+            </div>`;
+    }
+
+    save() {
+        console.log('Сохрнение');
+        this.value = document.getElementById('value').value;
+
+        var objheader_title = {
+            "value": `${this.value}`
+        };
+        this.header_title.value = objheader_title['value'];
+
+        this.data = objheader_title;
+        //build(JSON.stringify(objheader_title, undefined, 4));
+        setData(document.querySelector('.projects-section .bloks__list'), this.id, JSON.stringify(objheader_title));
+        
+        update(document.querySelector('.projects-section .bloks__list'));
+    }
+}
+
+class Header_icon {
+    constructor(id, object, header_icon) {
+        this.id = id;
+        this.object = object;
+        this.header_icon = header_icon;
+    }
+    data = null;
+    getPayload() {
+        console.log(this.header_icon);
+        var temp = "";
+        for (var i of this.header_icon.data)
+        {
+            temp += `<div class='blockModal'>
+            <div>Введите индитификатор иконки <a href='#!'>Как узнать?</a></div>
+            <input id="image_id" value="${i.image_id}" type="text" size="40"></input>
+            <div>Введите высоту иконки</div>
+            <input id="height" value="${i.height}" type="text" size="40"></input>
+            <div>Введите ширину иконки</div>
+            <input id="width" value="${i.width}" type="text" size="40"></input>
+        </div>`
+        }
+        return `
+            <div>
+                <a href="#!" title="Close" class="modal-close" onClick="header_iconELEMENT.save(); closeBlocksData()">Close</a>
+                <h1>${this.header_icon.id.toUpperCase()}</h1>
+                <div>Иконка заголовка виджета</div>
+                <br>${temp}
+                <input id="save" value="Добавить" type="button" onclick="addModalBlock()"></input>
+                <br>
+                <br>
+                <input id="save" value="Сохранить" type="button" onclick="header_iconELEMENT.save()"></input>
+            </div>`;
+    }
+
+    save() {
+        console.log('Сохрнение');
+        var objheader_icon = [];
+        for (var i of this.header_icon.data)
+        {
+            i.image_id = document.getElementById('image_id').value;
+            i.height = document.getElementById('height').value;
+            i.width = document.getElementById('width').value;
+
+            objheader_icon.push({
+                "image_id": `${i.image_id}`,
+                "height": `${i.height}`,
+                "width": `${i.width}`
+            })
+        }
+        
+
+        
+
+        this.data = objheader_icon;
+        //build(JSON.stringify(objheader_icon, undefined, 4));
+        setData(document.querySelector('.projects-section .bloks__list'), this.id, JSON.stringify(objheader_icon));
+        
+        update(document.querySelector('.projects-section .bloks__list'));
+    }
+}
 //#endregion
 
 function openBlocksData(data) {
@@ -192,6 +303,39 @@ function openBlocksData(data) {
             subtitleELEMENT.object = buildBlocksData(subtitleELEMENT.getPayload());
             
             console.log(subtitleELEMENT.subtitle);
+            break;
+        case "header_title":
+            if (typeof header_titleELEMENT === 'undefined'){
+                console.log('Создаем блок');
+                var textTitle = new Text("Заголовок виджета", null, "Вы можете поменять этот текст", null);
+                header_titleELEMENT = new Header_title(data.id,  null, null);
+                header_titleELEMENT.header_title = textTitle;
+                
+            }
+            
+            header_titleELEMENT.object = buildBlocksData(header_titleELEMENT.getPayload());
+            
+            console.log(header_titleELEMENT.header_title);
+            break;
+        case "header_icon":
+            if (typeof header_iconELEMENT === 'undefined'){
+                console.log('Создаем блок');
+                var imageTitle = new IMAGE_ITEM("Изображение виджета", null, [{
+                    "image_id": 451939019,
+                    "height": 30,
+                    "width": 30
+                  },{
+                    "image_id": 551939019,
+                    "height": 40,
+                    "width": 40
+                  }]);
+                header_iconELEMENT = new Header_icon(data.id,  null, null);
+                header_iconELEMENT.header_icon = imageTitle;
+                
+            }
+            
+            header_iconELEMENT.object = buildBlocksData(header_iconELEMENT.getPayload());
+            
             break;
     }
 }

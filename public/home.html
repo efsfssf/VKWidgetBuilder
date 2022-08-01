@@ -195,26 +195,63 @@
                     </section>
                     <section class="bloks">
                         <ul class="bloks__list2">
-                            <li class="bloks__itemMenu" id="image" data-obj='{"value":"Подтекст","style":{"weight":"regular","align":"center"}}'>
+                            <li class="bloks__itemMenu" id="header_title" data-obj=''>
                                 <div class="project-box-wrapper">
                                     <div class="project-box" style="background-color: #ffd3e2;">
                                       <div class="project-box-header">
                                         <span>В разработке</span>
                                         <div class="more-wrapper">
-                                          <button class="project-btn-more">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
+                                          <button class="project-btn-more" onclick="show_list(get_parent(this).id)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical" style="pointer-events: none;">
                                               <circle cx="12" cy="12" r="1"></circle>
                                               <circle cx="12" cy="5" r="1"></circle>
                                               <circle cx="12" cy="19" r="1"></circle></svg>
                                           </button>
+                                          <div id="header_title_id" class="courses">
+                                            <ul style="list-style-type: none;">
+                                                <li><a href="#!" onclick="javasctipt: reopenBlocksData(this)">Изменить</a></li>
+                                                <li><a href="#!" onclick="javasctipt: removeBlocksData(this)">Удалить</a></li>
+                                            </ul>
+                                        </div>
                                         </div>
                                       </div>
                                       <div class="project-box-content-header">
-                                        <p class="box-content-header">Изображение</p>
-                                        <p class="box-content-subheader">Добавляет изображение в виджет</p>
+                                        <p class="box-content-header">Заголовок виджета</p>
+                                        <p class="box-content-subheader">Отображает заголовок виджета в шапке виджета</p>
                                       </div>
                                     </div>
                                   </div>
+                            </li>
+                            <li class="bloks__itemMenu" id="header_icon" data-obj=''>
+                                <div class="project-box-wrapper">
+                                    <div class="project-box" style="background-color: #fee4cb;">
+                                        <div class="project-box-header">
+                                            <span>В разработке</span>
+                                            <div class="more-wrapper">
+                                                <button class="project-btn-more" onclick="show_list(get_parent(this).id)">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="pointer-events: none;"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-more-vertical">
+                                                        <circle cx="12" cy="12" r="1"></circle>
+                                                        <circle cx="12" cy="5" r="1"></circle>
+                                                        <circle cx="12" cy="19" r="1"></circle>
+                                                    </svg>
+                                                </button>
+                                                <div id="header_icon_id" class="courses">
+                                                    <ul style="list-style-type: none;">
+                                                        <li><a href="#!" onclick="javasctipt: reopenBlocksData(this)">Изменить</a></li>
+                                                        <li><a href="#!" onclick="javasctipt: removeBlocksData(this)">Удалить</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="project-box-content-header">
+                                            <p class="box-content-header">Иконка виджета</p>
+                                            <p class="box-content-subheader">Небольная иконка виджета украсит ваш виджет</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             <li class="bloks__itemMenu" id="title" data-obj="">
                                 <div class="project-box-wrapper">
@@ -241,13 +278,13 @@
                                             </div>
                                         </div>
                                         <div class="project-box-content-header">
-                                            <p class="box-content-header">Заголовок виджета</p>
-                                            <p class="box-content-subheader">В заголовке виджета может отображаться как иконка, так и текст</p>
+                                            <p class="box-content-header">Заголовок</p>
+                                            <p class="box-content-subheader">Это такой большой текст на виджете</p>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            <li class="bloks__itemMenu" id="subtitle" data-obj='{"value":"Подтекст","style":{"weight":"regular","align":"center"}}'>
+                            <li class="bloks__itemMenu" id="subtitle" data-obj=''>
                                 <div class="project-box-wrapper">
                                     <div class="project-box" style="background-color: #e9e7fd;">
                                         <div class="project-box-header">

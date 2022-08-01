@@ -66,3 +66,10 @@
 small {
     color: lightgray;
 }
+
+.blockModal{
+    background-color: #1f1c24;
+    color:cornsilk;
+    padding: 20px;
+    border-radius: 10px;
+}
