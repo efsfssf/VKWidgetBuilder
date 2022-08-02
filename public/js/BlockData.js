@@ -233,7 +233,7 @@ class Header_icon {
             </li>`;
             this.index++;
         }
-        
+        this.index = 0;
         return `
             <div>
                 <a href="#!" title="Close" class="modal-close" onClick="header_iconELEMENT.save(); closeBlocksData()">Close</a>
