@@ -233,7 +233,6 @@ class Header_icon {
             </li>`;
             this.index++;
         }
-        this.index = 0;
         return `
             <div>
                 <a href="#!" title="Close" class="modal-close" onClick="header_iconELEMENT.save(); closeBlocksData()">Close</a>
@@ -252,6 +251,8 @@ class Header_icon {
     }
 
     save() {
+        
+        this.index = 0;
         console.log('Сохрнение');
         var objheader_icon = [];
         var index = 0;
