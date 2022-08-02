@@ -221,22 +221,29 @@ class Header_icon {
         var temp = "";
         for (var i of this.header_icon.data)
         {
-            temp += `<div class='blockModal'>
-            <div>Введите индитификатор иконки <a href='#!'>Как узнать?</a></div>
-            <input id="image_id_${this.index}" value="${i.image_id}" type="text" size="40" required placeholder="451939019"></input>
-            <div>Введите высоту иконки</div>
-            <input id="height_${this.index}" value="${i.height}" type="text" size="40" placeholder="30"></input>
-            <div>Введите ширину иконки</div>
-            <input id="width_${this.index}" value="${i.width}" type="text" size="40" placeholder="30"></input>
-            </div>`;
+            temp += `<li class="bloks__itemMenu Modal">
+                <div class='blockModal'>
+                <div>Введите индитификатор иконки <a href='#!'>Как узнать?</a></div>
+                <input id="image_id_${this.index}" value="${i.image_id}" type="text" size="40" required placeholder="451939019"></input>
+                <div>Введите высоту иконки</div>
+                <input id="height_${this.index}" value="${i.height}" type="text" size="40" placeholder="30"></input>
+                <div>Введите ширину иконки</div>
+                <input id="width_${this.index}" value="${i.width}" type="text" size="40" placeholder="30"></input>
+                </div>
+            </li>`;
             this.index++;
         }
+        
         return `
             <div>
                 <a href="#!" title="Close" class="modal-close" onClick="header_iconELEMENT.save(); closeBlocksData()">Close</a>
                 <h1>${this.header_icon.id.toUpperCase()}</h1>
                 <div>Иконка заголовка виджета</div>
-                <br id='childElement'>${temp}
+                <br>
+                <section class="bloks" style="height: 750px;overflow-y: overlay;">
+                    <ul class="bloks__listModal" id='childElement'>
+                        ${temp}
+                    </ul>
                 <input id="save" value="Добавить" type="button" onclick="addModalBlock()"></input>
                 <br>
                 <br>
@@ -341,6 +348,8 @@ function openBlocksData(data) {
             
             header_iconELEMENT.object = buildBlocksData(header_iconELEMENT.getPayload());
             
+            // Что бы была возможность перемещать блоки
+            ModalWindowBlock();
             break;
     }
 }

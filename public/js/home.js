@@ -35,19 +35,22 @@ function get_parent(elem) {
 function addModalBlock() {
     
     var payload = `
+        <div class='blockModal'>
         <div>Введите индитификатор иконки <a href='#!'>Как узнать?</a></div>
         <input id="image_id_${header_iconELEMENT.index}" value="" type="text" size="40" required placeholder="451939019"></input>
         <div>Введите высоту иконки</div>
         <input id="height_${header_iconELEMENT.index}" value="" type="text" size="40" placeholder="30"></input>
         <div>Введите ширину иконки</div>
-        <input id="width_${header_iconELEMENT.index}" value="" type="text" size="40" placeholder="30"></input>`;
+        <input id="width_${header_iconELEMENT.index}" value="" type="text" size="40" placeholder="30"></input>
+        </div>`;
     
-    var getListModalBlock = document.querySelector('.blockModal').parentNode;
-    var newModel = document.createElement('div');
+    var getListModalBlock = document.querySelector('.Modal').parentNode;
+    var newModel = document.createElement('li');
     newModel.innerHTML = payload;
-    newModel.className = 'blockModal';
+    newModel.setAttribute('class','bloks__itemMenu Modal');
     const sp2 = document.getElementById("childElement");
-    getListModalBlock.insertBefore(newModel, sp2.nextSibling);
+    sp2.appendChild(newModel);
+    //getListModalBlock.insertBefore(newModel, sp2.nextSibling);
 
     header_iconELEMENT.header_icon.data.push(
         {
