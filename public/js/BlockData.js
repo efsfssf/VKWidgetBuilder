@@ -221,16 +221,21 @@ class Header_icon {
         var temp = "";
         for (var i of this.header_icon.data)
         {
-            temp += `<li class="bloks__itemMenu Modal" data-index="${this.index}">
-                <div class='blockModal'>
-                <div>Введите индитификатор иконки <a href='#!'>Как узнать?</a></div>
-                <input id="image_id_${this.index}" value="${i.image_id}" type="text" size="40" required placeholder="451939019"></input>
-                <div>Введите высоту иконки</div>
-                <input id="height_${this.index}" value="${i.height}" type="text" size="40" placeholder="30"></input>
-                <div>Введите ширину иконки</div>
-                <input id="width_${this.index}" value="${i.width}" type="text" size="40" placeholder="30"></input>
-                </div>
-            </li>`;
+            console.log(this.index);
+            if (typeof i !== 'undefined')
+            {
+                temp += `<li class="bloks__itemMenu Modal" data-index="${this.index}">
+                    <div class='blockModal'>
+                    <div>Введите индитификатор иконки <a href='#!'>Как узнать?</a></div>
+                    <input id="image_id_${this.index}" value="${i.image_id}" type="text" size="40" required placeholder="451939019"></input>
+                    <div>Введите высоту иконки</div>
+                    <input id="height_${this.index}" value="${i.height}" type="text" size="40" placeholder="30"></input>
+                    <div>Введите ширину иконки</div>
+                    <input id="width_${this.index}" value="${i.width}" type="text" size="40" placeholder="30"></input>
+                    </div>
+                </li>`;
+            }
+            
             this.index++;
         }
         return `
