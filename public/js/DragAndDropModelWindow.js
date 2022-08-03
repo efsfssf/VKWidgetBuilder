@@ -62,26 +62,31 @@ function ModalWindowBlock()
     });
 
     var deletepool = document.querySelector('.overlayDiv');
-
+    var avaibleDelete = false;
     deletepool.addEventListener("dragenter", (event) => {
         // highlight potential drop target when the draggable element enters it
         const currentElement = event.target;
-        if (currentElement === deletepool)
+        if (currentElement === deletepool){
             setColor(currentElement, '#ef393954');
+            avaibleDelete = true;    
+        }
     });
     
     deletepool.addEventListener("dragleave", (event) => {
         // reset background of potential drop target when the draggable element leaves it
         const currentElement = event.target;
-        if (currentElement === deletepool)
+        if (currentElement === deletepool){
             setColor(currentElement, '#ffffff40');
+            avaibleDelete = false;
+        }
     });
 
     deletepool.addEventListener("dragend", (event) => {
         // reset background of potential drop target when the draggable element leaves it
         setColor(deletepool, '#ffffff40');
         const currentElement = event.target;
-        removeModalBlock(currentElement);
+        if (avaibleDelete == true)
+            removeModalBlock(currentElement);
     });
 
     deletepool.addEventListener(`dragover`, (evt) => {
