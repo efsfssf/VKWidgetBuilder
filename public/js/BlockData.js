@@ -239,11 +239,16 @@ class Header_icon {
                 <h1>${this.header_icon.id.toUpperCase()}</h1>
                 <div>Иконка заголовка виджета</div>
                 <br>
+                <button class="add-btn" title="Add Block" onClick='addModalBlock()'>
+                    <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
                 <section class="bloks" style="height: 750px;overflow-y: overlay;">
                     <ul class="bloks__listModal" id='childElement'>
                         ${temp}
                     </ul>
-                <input id="save" value="Добавить" type="button" onclick="addModalBlock()"></input>
+                </selection>
                 <br>
                 <br>
                 <input id="save" value="Сохранить" type="button" onclick="header_iconELEMENT.save()"></input>

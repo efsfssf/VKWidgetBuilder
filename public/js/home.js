@@ -48,6 +48,7 @@ function addModalBlock() {
     var newModel = document.createElement('li');
     newModel.innerHTML = payload;
     newModel.setAttribute('class','bloks__itemMenu Modal');
+    newModel.setAttribute('draggable','true');
     const sp2 = document.getElementById("childElement");
     sp2.appendChild(newModel);
     //getListModalBlock.insertBefore(newModel, sp2.nextSibling);
