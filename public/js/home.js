@@ -43,12 +43,12 @@ function addModalBlock() {
         <div>Введите ширину иконки</div>
         <input id="width_${header_iconELEMENT.index}" value="" type="text" size="40" placeholder="30"></input>
         </div>`;
-    
-    var getListModalBlock = document.querySelector('.Modal').parentNode;
+
     var newModel = document.createElement('li');
     newModel.innerHTML = payload;
     newModel.setAttribute('class','bloks__itemMenu Modal');
     newModel.setAttribute('draggable','true');
+    newModel.setAttribute('data-index',header_iconELEMENT.index);
     const sp2 = document.getElementById("childElement");
     sp2.appendChild(newModel);
     //getListModalBlock.insertBefore(newModel, sp2.nextSibling);
@@ -63,4 +63,14 @@ function addModalBlock() {
 
     header_iconELEMENT.index += 1;
     console.log(header_iconELEMENT.header_icon);
+}
+
+// Удаление блоков из модального окна
+function removeModalBlock(currentElement) {
+    currentElement.parentNode.removeChild(currentElement);
+    console.log(header_iconELEMENT.header_icon.data);
+    delete header_iconELEMENT.header_icon.data[currentElement.dataset.index];
+    console.log(header_iconELEMENT.header_icon.data);
+
+    //header_iconELEMENT.reSave(header_iconELEMENT.header_icon.data);
 }

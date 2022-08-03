@@ -221,7 +221,7 @@ class Header_icon {
         var temp = "";
         for (var i of this.header_icon.data)
         {
-            temp += `<li class="bloks__itemMenu Modal">
+            temp += `<li class="bloks__itemMenu Modal" data-index="${this.index}">
                 <div class='blockModal'>
                 <div>Введите индитификатор иконки <a href='#!'>Как узнать?</a></div>
                 <input id="image_id_${this.index}" value="${i.image_id}" type="text" size="40" required placeholder="451939019"></input>
@@ -252,7 +252,9 @@ class Header_icon {
                 <br>
                 <br>
                 <input id="save" value="Сохранить" type="button" onclick="header_iconELEMENT.save()"></input>
-            </div>`;
+            </div>
+            
+            `;
     }
 
     save() {
@@ -261,19 +263,26 @@ class Header_icon {
         console.log('Сохрнение');
         var objheader_icon = [];
         var index = 0;
-        for (var i of this.header_icon.data)
-        {
-            console.log(document.getElementById(`image_id_${index}`));
-            i.image_id = Number(document.getElementById(`image_id_${index}`).value);
-            i.height = Number(document.getElementById(`height_${index}`).value);
-            i.width = Number(document.getElementById(`width_${index}`).value);
 
-            objheader_icon.push({
-                "image_id": i.image_id,
-                "height": i.height,
-                "width": i.width
-            })
+        console.log(this.header_icon.data);
+        for (const val of this.header_icon.data)
+        {
+            console.log(this.header_icon.data);
+            if (typeof val !== 'undefined')
+            {
+                console.log(Object.keys(this.header_icon.data)[index])
+                val.image_id = Number(document.getElementById(`image_id_${index}`).value);
+                val.height = Number(document.getElementById(`height_${index}`).value);
+                val.width = Number(document.getElementById(`width_${index}`).value);
+
+                objheader_icon.push({
+                    "image_id": val.image_id,
+                    "height": val.height,
+                    "width": val.width
+                })
+            }
             index++;
+                
         }
         
 
@@ -338,7 +347,7 @@ function openBlocksData(data) {
         case "header_icon":
             if (typeof header_iconELEMENT === 'undefined'){
                 console.log('Создаем блок');
-                var imageTitle = new IMAGE_ITEM("Изображение виджета", null, [{
+                var imageTitle = new IMAGE_ITEM("Иконка виджета", null, [{
                     "image_id": 451939019,
                     "height": 30,
                     "width": 30
