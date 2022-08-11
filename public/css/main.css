@@ -494,7 +494,7 @@
 	 flex: 1;
 }
  .project-box {
-	 --main-color-card: #dbf6fd;
+	 --main-color-card: #bce4ee;
 	 border-radius: 30px;
 	 padding: 16px;
 	 background-color: var(--main-color-card);

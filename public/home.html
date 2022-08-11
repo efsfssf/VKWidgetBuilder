@@ -116,14 +116,14 @@
                 <div class="messages">
                     <section class="bloks active">
                         <ul class="bloks__list">
-                            <li class="bloks__itemMenu" id="button">
+                            <li class="bloks__itemMenu" id="button" data-obj=''>
                                 <div class="project-box-wrapper">
                                     <div class="project-box" style="background-color: #fee4cb;">
                                         <div class="project-box-header">
                                             <span>В разработке</span>
                                             <div class="more-wrapper">
-                                                <button class="project-btn-more">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                <button class="project-btn-more" onclick="show_list(get_parent(this).id)">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="pointer-events: none;"
                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                         class="feather feather-more-vertical">
@@ -132,6 +132,12 @@
                                                         <circle cx="12" cy="19" r="1"></circle>
                                                     </svg>
                                                 </button>
+                                                <div id="button_id" class="courses">
+                                                    <ul style="list-style-type: none;">
+                                                        <li><a href="#!" onclick="javasctipt: reopenBlocksData(this)">Изменить</a></li>
+                                                        <li><a href="#!" onclick="javasctipt: removeBlocksData(this)">Удалить</a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="project-box-content-header">
@@ -142,14 +148,14 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="bloks__itemMenu" id="action">
+                            <li class="bloks__itemMenu" id="action" data-obj=''>
                                 <div class="project-box-wrapper">
                                     <div class="project-box" style="background-color: #e9e7fd;">
                                         <div class="project-box-header">
                                             <span>В разработке</span>
                                             <div class="more-wrapper">
-                                                <button class="project-btn-more">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                <button class="project-btn-more" onclick="show_list(get_parent(this).id)">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="pointer-events: none;"
                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                         class="feather feather-more-vertical">
@@ -158,6 +164,12 @@
                                                         <circle cx="12" cy="19" r="1"></circle>
                                                     </svg>
                                                 </button>
+                                                <div id="action_id" class="courses">
+                                                    <ul style="list-style-type: none;">
+                                                        <li><a href="#!" onclick="javasctipt: reopenBlocksData(this)">Изменить</a></li>
+                                                        <li><a href="#!" onclick="javasctipt: removeBlocksData(this)">Удалить</a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="project-box-content-header">
@@ -167,7 +179,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="bloks__itemMenu" id="flooter">
+                            <li class="bloks__itemMenu" id="flooter" data-obj=''>
                                 <div class="project-box-wrapper">
                                     <div class="project-box">
                                         <div class="project-box-header">

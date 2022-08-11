@@ -58,6 +58,8 @@ function ModalWindowBlock()
         }
         // Вставляем activeElement перед nextElement
         bloksListElement.insertBefore(activeElement, nextElement);
+
+
         BlocksList(bloksListElement);
     });
 

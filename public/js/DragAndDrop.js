@@ -88,13 +88,25 @@ var windowOnloadAdd = function (event) {
     for (const task of taskElementsMenuTwo) {
         task.draggable = true;
     }
-
+    //var clone;
     bloksListElementMenuOne.addEventListener(`dragstart`, (evt) => {
+        
+        /*clone=evt.target.cloneNode(true);
+        clone.setAttribute("class", "bloks__itemMenu action");
+        clone.setAttribute("id", "");
+        console.log(clone);
+        var ul = document.querySelector(".bloks__list");
+        console.log(ul);
+        ul.insertBefore(clone, ul.children[2]);
+*/
         evt.target.classList.add(`selected`);
     })
     
     bloksListElementMenuOne.addEventListener(`dragend`, (evt) => {
+      /*  var ul = document.querySelector(".bloks__list");
+        ul.removeChild(clone);*/
         evt.target.classList.remove(`selected`);
+
     });
     bloksListElementMenuTwo.addEventListener(`dragstart`, (evt) => {
         evt.target.classList.add(`selected`);
