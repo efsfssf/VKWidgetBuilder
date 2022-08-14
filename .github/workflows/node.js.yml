@@ -27,4 +27,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: nodemon server.js build --if-present
+    - run: npm server.js build --if-present
