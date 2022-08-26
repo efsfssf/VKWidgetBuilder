@@ -73,8 +73,6 @@ function setData(content, id, obj) {
     el.dataset.obj = obj;
 }
 
-// ОПИСАНИЕ БЛОКОВ
-
 //#region ОПИСАНИЕ БЛОКОВ
 class Title {
     constructor(id, object, title) {
@@ -286,7 +284,7 @@ class Header_icon {
                 <h1>${this.header_icon.id.toUpperCase()}</h1>
                 <div>Иконка заголовка виджета</div>
                 <br>
-                <button class="add-btn" title="Add Block" onClick='addModalBlock()'>
+                <button class="add-btn" title="Add Block" onClick='addModalBlock("${this.header_icon.id.toUpperCase()}")'>
                     <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="12" y1="5" x2="12" y2="19"></line>
                         <line x1="5" y1="12" x2="19" y2="12"></line></svg>
@@ -422,7 +420,7 @@ class BUTTON_BLOCK {
         }
         if (this.data.icon !== null)
         {
-            temp_data.icon = this.data.icon;
+            temp_data.icon = this.data.icon.items.data;
         }
         if (this.data.title !== null)
         {
@@ -442,7 +440,7 @@ class BUTTON_BLOCK {
                 var color = 'black';
                 if (i == 'title'){
                     color = '#ffd3e2';
-                    temp += `<li class="bloks__itemMenu Modal" data-index="${this.index}">
+                    temp += `<li class="bloks__itemMenu Modal" data-index="${this.index}" id="title_mini_block">
                     <div class='blockModal' style="background-color: ${color}; color: black;">
                     <p class="box-content-header">${JSON.parse(JSON.stringify(temp_data[i])).id}</p>
                     <div>Введите текст виджета</div>
@@ -467,7 +465,7 @@ class BUTTON_BLOCK {
                 }
                 else if (i == 'action'){
                     color = '#e9e7fd';
-                    temp += `<li class="bloks__itemMenu Modal" data-index="${this.index}">
+                    temp += `<li class="bloks__itemMenu Modal" data-index="${this.index}" id="action_mini_block">
                     <div class='blockModal' style="background-color: ${color}; color: black;">
                     <p class="box-content-header">${JSON.parse(JSON.stringify(temp_data[i])).id}</p>
                     <div>Тип действия, которое будет выполнено при нажатии на виджет.</div>
@@ -485,25 +483,26 @@ class BUTTON_BLOCK {
                 }
                 else if (i == 'icon'){
                     color = '#fee4cb';
-                    for (var j in Object.keys(JSON.parse(JSON.stringify(temp_data[i])).items.data))
+                    for (var j in Object.keys(JSON.parse(JSON.stringify(temp_data[i]))))
                     {
-                        temp += `<li class="bloks__itemMenu Modal" data-index="${j}">
+                        temp += `<li class="bloks__itemMenu Modal" data-index="${this.index}" id="icon_mini_block">
                     <div class='blockModal' style="background-color: ${color}; color: black;">
                     <p class="box-content-header">${JSON.parse(JSON.stringify(temp_data[i])).id}</p>
                     <div>Введите индитификатор иконки <a href='#!'>Как узнать?</a></div>
-                    <input id="image_id_${j}" value="${JSON.parse(JSON.stringify(temp_data[i])).items.data[j].image_id}" type="text" size="40" required placeholder="451939019"></input>
+                    <input id="image_id_${j}" value="${JSON.parse(JSON.stringify(temp_data[i]))[j].image_id}" type="text" size="40" required placeholder="451939019"></input>
                     <div>Введите высоту иконки</div>
-                    <input id="height_${j}" value="${JSON.parse(JSON.stringify(temp_data[i])).items.data[j].height}" type="text" size="40" placeholder="30"></input>
+                    <input id="height_${j}" value="${JSON.parse(JSON.stringify(temp_data[i]))[j].height}" type="text" size="40" placeholder="30"></input>
                     <div>Введите ширину иконки</div>
-                    <input id="width_${j}" value="${JSON.parse(JSON.stringify(temp_data[i])).items.data[j].width}" type="text" size="40" placeholder="30"></input>
+                    <input id="width_${j}" value="${JSON.parse(JSON.stringify(temp_data[i]))[j].width}" type="text" size="40" placeholder="30"></input>
                     </div>
                 </li>`;
+                    this.index++;
                     }
                     
                 }    
                 else if (i == 'style'){
                     color = '#c8f7dc';
-                    temp += `<li class="bloks__itemMenu Modal" data-index="${this.index}">
+                    temp += `<li class="bloks__itemMenu Modal" data-index="${this.index}" id="style_mini_block">
                     <div class='blockModal' style="background-color: ${color}; color: black;">
                     <p class="box-content-header">${JSON.parse(JSON.stringify(temp_data[i])).id}</p>
                     <div>Этот блок описывает стили, применимые к базовому элементу BUTTON.</div>
@@ -539,13 +538,13 @@ class BUTTON_BLOCK {
                 </button>
                 <div id="add-btn_id" class="courses">
                     <ul style="list-style-type: none;">
-                        <li><a href="#!" style="background-color: #ffd3e2; color:black;" onclick="javasctipt: ">Добавить заголовок</a></li>
-                        <li><a href="#!" style="background-color: #fee4cb; color:black;" onclick="javasctipt: ">Добавить иконку</a></li>
-                        <li><a href="#!" style="background-color: #c8f7dc; color:black;" onclick="javasctipt: ">Добавить стиль</a></li>
-                        <li><a href="#!" style="background-color: #e9e7fd; color:black;" onclick="javasctipt: ">Добавить действие</a></li>
+                        <li><a href="#!" style="background-color: #ffd3e2; color:black;" onclick="javascript: addModalBlock('title_mini_block')">Добавить заголовок</a></li>
+                        <li><a href="#!" style="background-color: #fee4cb; color:black;" onclick="javascript: addModalBlock('icon_mini_block')">Добавить иконку</a></li>
+                        <li><a href="#!" style="background-color: #c8f7dc; color:black;" onclick="javascript: addModalBlock('style_mini_block')">Добавить стиль</a></li>
+                        <li><a href="#!" style="background-color: #e9e7fd; color:black;" onclick="javascript: addModalBlock('action_mini_block')">Добавить действие</a></li>
                     </ul>
                 </div>
-                <section class="bloks" style="height: 750px;overflow-y: overlay;">
+                <section class="bloks" style="height: 700px;overflow-y: overlay;">
                     <ul class="bloks__listModal" id='childElement'>
                         ${temp}
                     </ul>
@@ -566,10 +565,11 @@ class BUTTON_BLOCK {
         var obj_icon = [];
         var index = 0;
 
+        // Получаем новые данные
         for (const val in this.data)
         {
             console.log(val);
-            if (typeof val !== 'undefined' && val != 'id')
+            if (this.data[val] !== null && val != 'id')
             {
                 if (val == 'title'){
                     obj.title = {
@@ -583,6 +583,8 @@ class BUTTON_BLOCK {
                 else if (val == 'action'){
                     var data = document.getElementById('value').value;
                     var type = document.getElementById('typeACTION').value;
+
+                    console.log(data);
 
                     if (type === 'open_url')
                     {
@@ -621,6 +623,7 @@ class BUTTON_BLOCK {
                             
                     }
                     obj.icon = obj_icon;
+
                     
                 }    
                 else if (val == 'style'){
@@ -633,13 +636,27 @@ class BUTTON_BLOCK {
                 
         }
         
-        console.log(obj);
+        // Сохраняем данные, что бы при редактировании они автоматически заполнились
+        if(obj['title'] !== undefined){
+            this.data.title.value = obj.title.value;
+            this.data.title.style = obj.title.style
+        }
+        if(obj['style'] !== undefined){  
+            this.data.style.type = obj.style.type;
+            this.data.style.align = obj.style.align;
+        }
+        if(obj['action'] !== undefined){  
+            this.data.action.type = obj.action.type;
+            this.data.action.data = typeof obj.action.url !== 'undefined' ? obj.action.url : Number(obj.action.app_launch_params.app_id);
+        }
+        if(obj['icon'] !== undefined){  
+            this.data.icon.items.data = obj.icon;
+        }
         
 
-        this.data = obj;
-        //build(JSON.stringify(objheader_icon, undefined, 4));
+        // Утановка данных div блока (в json)
         setData(document.querySelector('.projects-section .bloks__list'), this.id, JSON.stringify(obj));
-        
+        // Обновление результата json
         update(document.querySelector('.projects-section .bloks__list'));
     }
 }
@@ -749,7 +766,7 @@ function openBlocksData(data) {
                     "align": "center"
                 })
                 var style = new BUTTON_STYLE('Стиль кнопки', null, 'outline', 'center')
-                var button = new BUTTON('Кнопка', null, action, text, icon, style);
+                var button = new BUTTON('Кнопка', null, null, null, null, null);
                 buttonELEMENT = new BUTTON_BLOCK(data.id,  null, button);
                 buttonELEMENT.data = button;
                 
