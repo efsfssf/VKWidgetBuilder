@@ -289,7 +289,7 @@ class Header_icon {
                         <line x1="12" y1="5" x2="12" y2="19"></line>
                         <line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 </button>
-                <section class="bloks" style="height: 750px;overflow-y: overlay;">
+                <section class="bloks" style="height: 700px;overflow-y: overlay;">
                     <ul class="bloks__listModal" id='childElement'>
                         ${temp}
                     </ul>
@@ -774,6 +774,8 @@ function openBlocksData(data) {
             
             buttonELEMENT.object = buildBlocksData(buttonELEMENT.getPayload());
             
+            // Что бы была возможность перемещать блоки
+            ModalWindowBlock();
             break;
     }
 }

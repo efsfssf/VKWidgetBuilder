@@ -64,6 +64,7 @@ function ModalWindowBlock()
     });
 
     var deletepool = document.querySelector('.overlayDiv');
+    console.log(deletepool);
     var avaibleDelete = false;
     deletepool.addEventListener("dragenter", (event) => {
         // highlight potential drop target when the draggable element enters it
