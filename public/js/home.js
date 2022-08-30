@@ -127,6 +127,9 @@ function addModalBlock(type_add_block) {
             newModel.setAttribute('data-index',buttonELEMENT.index);
             const sp2 = document.getElementById("childElement");
             sp2.appendChild(newModel);
+
+            
+            buttonELEMENT.index++;
         }
         else
         {
@@ -167,6 +170,9 @@ function addModalBlock(type_add_block) {
             newModel.setAttribute('data-index',buttonELEMENT.index);
             const sp2 = document.getElementById("childElement");
             sp2.appendChild(newModel);
+
+            
+            buttonELEMENT.index++;
         }else
         {
             alert('Максимально возможное кол-во мини-блоков данного типа: ' + availableButtonBlocks[type_add_block])
@@ -209,6 +215,9 @@ function addModalBlock(type_add_block) {
             newModel.setAttribute('data-index',buttonELEMENT.index);
             const sp2 = document.getElementById("childElement");
             sp2.appendChild(newModel);
+
+            
+            buttonELEMENT.index++;
         }else
         {
             alert('Максимально возможное кол-во мини-блоков данного типа: ' + availableButtonBlocks[type_add_block])
@@ -232,12 +241,24 @@ function addModalBlock(type_add_block) {
                 "vertical_align": "center",
                 "align": "center"
             });
-            buttonELEMENT.data.icon = icon;
-            console.log(buttonELEMENT.data.icon.items.data);
+            if (buttonELEMENT.data.icon === null)
+            {
+                buttonELEMENT.data.icon = icon;
+            }
+            else
+            {
+                console.log(buttonELEMENT.data.icon.items.data);
+                buttonELEMENT.data.icon.items.data.push({
+                    "image_id": 451939019,
+                    "height": 30,
+                    "width": 30
+                  })
+            }
+            console.log(buttonELEMENT.data.icon);
             color = '#fee4cb';
             for (var j in Object.keys(buttonELEMENT.data.icon.items.data))
             {
-                payload += `
+                payload = `
                     <div class='blockModal' style="background-color: ${color}; color: black;">
                     <p class="box-content-header">${buttonELEMENT.data.icon.id}</p>
                     <div>Введите индитификатор иконки <a href='#!'>Как узнать?</a></div>
@@ -247,7 +268,6 @@ function addModalBlock(type_add_block) {
                     <div>Введите ширину иконки</div>
                     <input id="width_${j}" value="${buttonELEMENT.data.icon.items.data[j].width}" type="text" size="40" placeholder="30"></input>
                     </div>`;
-                    buttonELEMENT.index++;
             }
             var newModel = document.createElement('li');
             newModel.innerHTML = payload;
@@ -257,6 +277,8 @@ function addModalBlock(type_add_block) {
             newModel.setAttribute('data-index',buttonELEMENT.index);
             const sp2 = document.getElementById("childElement");
             sp2.appendChild(newModel);
+            
+            buttonELEMENT.index++;
         }else
         {
             alert('Максимально возможное кол-во мини-блоков данного типа: ' + availableButtonBlocks[type_add_block])

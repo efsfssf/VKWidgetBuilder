@@ -551,7 +551,7 @@ class BUTTON_BLOCK {
                 </selection>
                 <br>
                 <br>
-                <input id="save" value="Сохранить" type="button" onclick="buttonELEMENT.save()"></input>
+                
             </div>
             
             `;
