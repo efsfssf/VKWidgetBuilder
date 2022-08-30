@@ -194,3 +194,12 @@ label span:before {
   transition: 0.25s ease;
   box-shadow: inset 0 0 0 0.125em #00005c;
 }
+
+.disabled {
+  color: gray;
+  pointer-events: none;
+}
+
+.radio-strip {
+  border: none;
+}
