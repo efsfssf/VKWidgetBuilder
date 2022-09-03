@@ -823,4 +823,20 @@
 ::selection {
     background: #1f1c24; /* Цвет фона */
     color: #fff; /* Цвет текста */
-   }
+}
+
+.settings-container {
+	position: fixed;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: block;
+    z-index: 99999999;
+	
+	width: 100%;
+	flex-direction: column;
+	height: 100%;
+	background-color: var(--app-container);
+	transition: 0.2s;
+	max-width: 1800px;
+}

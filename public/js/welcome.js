@@ -7,6 +7,8 @@ var windowOnloadAdd = function (event) {
     } else {
        window.onload = event;
     };
+
+    localStorage.setItem('debug_mode', 'false');
  };
 
  windowOnloadAdd(function() {

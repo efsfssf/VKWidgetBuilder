@@ -19,6 +19,11 @@ app.get('/home', (req, res) => {
     res.sendFile(path.join(initial_path, "home.html"));
 });
 
+app.get('/settings', (req, res) => {
+    //res.send({ message: 'Hello WWW!' });
+    res.sendFile(path.join(initial_path, "settings.html"));
+});
+
 app.listen(port, hostname, () => {
     console.log('Application listening on port 3000!');
 });

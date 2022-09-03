@@ -10,6 +10,7 @@ var windowOnloadAdd = function (event) {
 
  windowOnloadAdd(function() {
     menuItems();
+    check_settings();
     const bloksListElement = document.getElementsByClassName('bloks__list')[1];
     
     const taskElements = bloksListElement.querySelectorAll(`.bloks__item`);

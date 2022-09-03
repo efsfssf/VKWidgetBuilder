@@ -30,6 +30,21 @@ function openMenu(item) {
     console.log(item);
 }
 
+function openSettings() {
+    /*const body = document.body;
+    console.log(body);
+
+
+    payload = `<span>Тест</span>`;
+
+    var newModel = document.createElement('div');
+    newModel.innerHTML = payload;
+    newModel.setAttribute('class','settings-container');
+    body.insertBefore(newModel, body.firstChild);*/
+
+    window.location.href = "/settings";
+}
+
 
 
 function get_parent(elem) {
@@ -296,4 +311,67 @@ function removeModalBlock(currentElement) {
     console.log(header_iconELEMENT.header_icon.data);
 
     //header_iconELEMENT.reSave(header_iconELEMENT.header_icon.data);
+}
+
+const check_settings = () => {
+    var debug_mode_bool = (localStorage.debug_mode === 'true');
+
+    if (debug_mode_bool)
+    {
+        var panel = document.querySelector('.projects-section').querySelector('.bloks__list');
+        let i = 0;
+        while (i < 4) { // выводит 0, затем 1, затем 2
+            var newModel = document.createElement('li');
+            newModel.setAttribute("draggable", "true");
+            newModel.className = "bloks__item";
+            newModel.innerHTML = `Empty`;
+            panel.appendChild(newModel);
+            i++;
+        }
+
+        //Create a new stylesheet
+        const sheet = new CSSStyleSheet();
+        //Add some CSS to the stylesheet
+        sheet.replaceSync(':root {--debug-color: #b2d9d0; !important;}');
+        // Apply the stylesheet to a document:
+        document.adoptedStyleSheets = [sheet];
+
+        var panel = document.querySelector('.messages').querySelectorAll('.bloks')[1].querySelector('.bloks__list2');
+        var newModel = document.createElement('li');
+        newModel.setAttribute("id", "test");
+        newModel.setAttribute("draggable", "true");
+        newModel.setAttribute("data-obj", "");
+        newModel.className = "bloks__itemMenu";
+        newModel.innerHTML = `<div class="project-box-wrapper">
+        <div class="project-box">
+            <div class="project-box-header">
+                <span>Тестовый блок</span>
+                <div class="more-wrapper">
+                    <button class="project-btn-more" onclick="show_list(get_parent(this).id)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="pointer-events: none;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-more-vertical">
+                            <circle cx="12" cy="12" r="1"></circle>
+                            <circle cx="12" cy="5" r="1"></circle>
+                            <circle cx="12" cy="19" r="1"></circle>
+                        </svg>
+                    </button>
+                    <div id="test_id" class="courses">
+                        <ul style="list-style-type: none;">
+                            <li><a href="#!" onclick="javasctipt: reopenBlocksData(this)">Изменить</a></li>
+                            <li><a href="#!" onclick="javasctipt: removeBlocksData(this)">Удалить</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="project-box-content-header">
+                <p class="box-content-header">Блок испытаний</p>
+                <p class="box-content-subheader">Данный блок является тестовым, для проведения различных испытаний при разработке сайта</p>
+            </div>
+        </div>
+    </div>`;
+        panel.appendChild(newModel);
+
+    }
 }
