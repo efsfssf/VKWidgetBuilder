@@ -23,7 +23,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 2em;
-    background: white;
+    background: var(--app-container);
+    color: var(--main-color);
 }
 
 .modal-window header {
