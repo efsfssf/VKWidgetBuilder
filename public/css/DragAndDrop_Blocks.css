@@ -37,6 +37,10 @@
   transition: background-color 0.5s;
 }
 
+.header_item {
+  cursor: default;
+}
+
 .bloks__itemMenu {
   transition: background-color 0.5s;
   margin-bottom: 10px;

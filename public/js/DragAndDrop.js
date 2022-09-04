@@ -24,7 +24,8 @@ window.onbeforeunload = function (evt) {
 
     // Перебираем все элементы списка и присваиваем нужное значение
     for (const task of taskElements) {
-        task.draggable = true;
+        if (task.className !== 'bloks__item header_item')
+            task.draggable = true;
     }
 
     bloksListElement.addEventListener(`dragstart`, (evt) => {
