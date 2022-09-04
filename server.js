@@ -1,9 +1,12 @@
 const express = require('express');
+const { copyFileSync } = require('fs');
 const app = express();
 const path = require('path');
 
 const hostname = '127.0.0.1';
 const port = 3000;
+
+var argv = require('optimist').argv;
 
 // инициализация рабочей директории
 let initial_path = path.join(__dirname, "public");
@@ -24,6 +27,14 @@ app.get('/settings', (req, res) => {
     res.sendFile(path.join(initial_path, "settings.html"));
 });
 
-app.listen(port, hostname, () => {
-    console.log('Application listening on port 3000!');
-});
+if (argv.m !== 'github')
+{
+    app.listen(port, hostname, () => {
+    
+        console.log('Application listening on port 3000!');
+    });
+}
+else
+{
+    console.log('Код протестирован');
+}

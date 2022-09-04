@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "node server.js"
+    "test": "node server.js -m github"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/efsfssf/VKWidgetBuilder#readme",
   "dependencies": {
     "express": "^4.18.1",
+    "optimist": "^0.5.2",
     "path": "^0.12.7"
   }
 }
