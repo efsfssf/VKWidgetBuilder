@@ -8,6 +8,13 @@ var windowOnloadAdd = function (event) {
     };
  };
 
+var isDirty = false;
+window.onbeforeunload = function (evt) {
+    if (isDirty) {
+        return 'If you continue your changes will not be saved.';
+    }
+}
+
  windowOnloadAdd(function() {
     menuItems();
     check_settings();
@@ -70,7 +77,18 @@ var windowOnloadAdd = function (event) {
             return;
         }
         // Вставляем activeElement перед nextElement
-        bloksListElement.insertBefore(activeElement, nextElement);
+        let temp = bloksListElement;
+        let not_header = nextElement === null ? false : nextElement.className;
+        if(temp.childElementCount === 1 || temp.childElementCount === 2 || not_header === 'bloks__item header_item')
+        {
+            bloksListElement.append(activeElement);
+        }
+        else
+        {
+            bloksListElement.insertBefore(activeElement, nextElement);
+        }
+        
+        isDirty = true;
         BlocksList(bloksListElement);
     });
 
