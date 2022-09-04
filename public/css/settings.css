@@ -1,6 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 * {
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
+    /* display: flex; */
+    /* flex-direction: column-reverse; */
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* align-content: stretch; */
+    /* justify-content: center; */
   }
   
 html, body {
@@ -8,7 +14,7 @@ html, body {
     height: 100%;
     padding: 0;
     margin: 0;
-    font-family: "Open Sans", sans-serif;
+    /* font-family: "Open Sans", sans-serif; */
 }
 :root {
     --bg-color: #f5f8ff;
@@ -31,6 +37,26 @@ html, body {
     --box-color-3: #ffd9d9;
     --box-color-4: #daffe5;
     --task-color: #777982;
+}
+.dark:root {
+    --bg1-color: #1f1d2b;
+    --app-container: #111827;
+    --main-color: #fff;
+    --secondary-color: rgba(255, 255, 255, .8);
+    --bg-color: #1f2937;
+    --link-color: rgba(255, 255, 255, .8);
+    --link-color-hover: rgba(195, 207, 244, 0.1);
+    --link-color-active-bg: rgba(195, 207, 244, 0.2);
+    --button-bg: #1f2937;
+    --search-area-bg: #1f2937;
+    --message-box-hover: #243244;
+    --message-box-border: rgba(255, 255, 255, .1);
+    --star: #ffd92c;
+    --light-font: rgba(255, 255, 255, .8);
+    --more-list-bg: #2f3142;
+    --more-list-bg-hover: rgba(195, 207, 244, 0.1);
+    --more-list-shadow: rgba(195, 207, 244, 0.1);
+    --message-btn: rgba(195, 207, 244, 0.1);
 }
 body, .item, .top-part, .top-part .count {
     display: flex;
@@ -67,14 +93,22 @@ button {
     width: 230px;
     border-right: 1px solid #e3e7f7;
     position: relative;
+    color: var(--main-color);
 }
 .left-content {
-    padding: 40px;
+    padding: 30px;
 }
 .item {
     color: var(--main-color);
     margin-bottom: 14px;
+    padding: 5px;
     font-weight: 500;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .item svg {
     width: 14px;
@@ -92,6 +126,7 @@ button {
     padding: 12px;
     display: flex;
     justify-content: space-between;
+    background-color: (--main-color);
 }
 .more-button {
     position: absolute;
@@ -121,6 +156,7 @@ button {
     flex-direction: column;
     flex: 1;
     padding: 40px 20px 0 20px;
+    background-color: var(--app-container);
 }
 .page-content .header {
     font-size: 26px;
@@ -229,6 +265,8 @@ label .label-text:before {
 
 .top-part {
     align-self: flex-end;
+    /* position: absolute; */
+    /* right:0px; */
 }
 .top-part svg {
     width: 24px;
@@ -236,6 +274,58 @@ label .label-text:before {
     color: var(--main-color);
     margin-right: 14px;
 }
+
+.item:hover {
+    background-color: #787b8342;
+    border-radius: 3px;
+}
+
+.active {
+    border-radius: 3px;
+    background-color: #787b8370;
+}
+
+.page {
+    display: none;
+}
+
+.active_page {
+    display: block !important;
+}
+
+#dark_block {
+    height:50px;
+    width:50px;
+    background: #1f2937;
+    float:left;
+    padding: 100px;
+    border-radius: 10px;
+    margin: 10px;
+    border: 4px solid rgb(255, 255, 255);
+    outline: solid 4px #1f2937;
+
+}
+
+#while_block {
+    height:50px;
+    width:50px;
+    background-color: #787b8370;
+    float:left;
+    padding: 100px;
+    border-radius: 10px;
+    margin: 10px;
+    border: 4px solid rgb(255, 255, 255);
+    outline: solid 4px #1f2937;
+}
+
+#dark_block:hover {
+    background-color: #293444;
+}
+
+#while_block:hover {
+    background-color: #676a7270;
+}
+
 @media screen and (max-width: 900px) {
     .left-bar {
         display: none;

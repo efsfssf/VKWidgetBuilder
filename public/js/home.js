@@ -1,3 +1,21 @@
+document.addEventListener('DOMContentLoaded', function () {
+    var modeSwitch = document.querySelector('.mode-switch');
+  
+    modeSwitch.addEventListener('click', function () {
+        switch_theme(this);
+    });
+
+    console.log(localStorage.dark_mode);
+    if (localStorage.dark_mode === 'true') switch_theme(modeSwitch);
+
+});
+
+const switch_theme = (modeSwitch) => {
+    document.documentElement.classList.toggle('dark');
+    modeSwitch.classList.toggle('active');
+    localStorage.dark_mode = document.documentElement.classList.value === 'dark' ? true : false;
+}
+
 // Список доступных блоков в модальном окне настройки блока "кнопка"
 const availableButtonBlocks = {
     "title_mini_block": 1,
