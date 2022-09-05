@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "node server.js -m github",
-    "prod": "npm start server.js",
+    "prod": "node server.js",
     "dep": "npm install nodemon --save-dev"
   },
   "repository": {
