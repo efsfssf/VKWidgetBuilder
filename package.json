@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon server.js",
     "test": "node server.js -m github",
-    "prod": "npm start server.js"
+    "prod": "npm start server.js",
+    "dep": "npm install nodemon --save-dev"
   },
   "repository": {
     "type": "git",
