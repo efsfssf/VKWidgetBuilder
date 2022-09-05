@@ -7,7 +7,7 @@
     "start": "nodemon server.js",
     "test": "node server.js -m github",
     "prod": "node server.js",
-    "dep": "npm install nodemon --save-dev"
+    "dep": "node server.js"
   },
   "repository": {
     "type": "git",
