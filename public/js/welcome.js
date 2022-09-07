@@ -15,6 +15,12 @@ var windowOnloadAdd = function (event) {
  windowOnloadAdd(function() {
     slideIndex = 1;
     showSlides(slideIndex);
+
+    var buttonRef = document.querySelector('.pure-material-button-contained');
+    buttonRef.addEventListener("click", function() {
+        var widget_type = document.querySelector('input[name="amt"]:checked').value;
+        location.href = `/home?widget_type=${widget_type}`
+    }, false);
  });
 
 /* Функция увеличивает индекс на 1, показывает следующй слайд*/
@@ -52,5 +58,3 @@ function showSlides(n) {
     slides[slideIndex - 1].style.display = "block";
     //dots[slideIndex - 1].className += " active";
 }
-
-
